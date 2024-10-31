@@ -40,6 +40,12 @@ namespace SingleResponsibilityPrinciple
                 return false;
             }
 
+            if (tradeAmount < 1000 || tradeAmount > 1000000)
+            {
+                logger.LogWarning("Trade amount out of bounds: '{0}'", tradeAmount);
+                return false;
+            }
+
             return true;
         }
     }
