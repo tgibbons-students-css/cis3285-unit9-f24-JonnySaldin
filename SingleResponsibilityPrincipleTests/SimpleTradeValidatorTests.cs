@@ -66,6 +66,7 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             Assert.IsTrue(result);
         }
+
         [TestMethod()]
         public void TestAmount999()
         {
@@ -80,6 +81,7 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             Assert.IsFalse(result);
         }
+
         [TestMethod()]
         public void TestAmount1000()
         {
@@ -94,6 +96,7 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             Assert.IsTrue(result);
         }
+
         [TestMethod()]
         public void TestAmountNeg10000()
         {
@@ -108,6 +111,7 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             Assert.IsFalse(result);
         }
+
         [TestMethod()]
         public void TestAmount1m()
         {
@@ -122,6 +126,7 @@ namespace SingleResponsibilityPrinciple.Tests
             //Assert
             Assert.IsTrue(result);
         }
+
         [TestMethod()]
         public void TestAmount101k()
         {
@@ -134,6 +139,21 @@ namespace SingleResponsibilityPrinciple.Tests
             bool result = tradeValidator.Validate(strData);
 
             //Assert
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void TestEmptyCurrencyString()
+        {
+            // Arrange
+            var logger = new ConsoleLogger();
+            var tradeValidator = new SimpleTradeValidator(logger);
+            string[] strData = { "", "4444", "1.00" };
+
+            // Act
+            bool result = tradeValidator.Validate(strData);
+
+            // Assert
             Assert.IsFalse(result);
         }
     }
